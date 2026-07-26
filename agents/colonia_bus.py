@@ -1,4 +1,7 @@
-import subprocess, json, sys, time, threading
+import subprocess, json, sys, time, threading, os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, BASE_DIR)
 
 VERSION = "0.3.0"
 
@@ -26,7 +29,7 @@ def iniciar_colonia():
     ).start()
 
     proceso = subprocess.Popen(
-        ["python3", "hormiga_centinela.py"],
+        ["python3", os.path.join(BASE_DIR, "hormiga_centinela.py")],
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         text=True,
